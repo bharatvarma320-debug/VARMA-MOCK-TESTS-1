@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RRB NTPC Mock Test</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -10,7 +11,13 @@
 <div class="login-box">
 
     <h2>RRB NTPC Mock Test</h2>
-<h3 id="timer" style="color:red;">Time Left: 80:00</h3>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <h3 id="timer" style="color:red;margin:0;">⏰ Time Left: 80:00</h3>
+
+        <button onclick="skipQuestion()">Skip</button>
+    </div>
+
     <h3 id="question"></h3>
 
     <div id="options"></div>

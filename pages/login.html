@@ -1,23 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>RRB NTPC Quiz</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Army GD Mock Test</title>
+
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
 
-<h1 style="text-align:center;">RRB NTPC Mock Test 1</h1>
-
 <div class="login-box">
-    <h3>1. What is the capital of India?</h3>
 
-    <input type="radio" name="q1"> Mumbai<br><br>
-    <input type="radio" name="q1"> Delhi<br><br>
-    <input type="radio" name="q1"> Chennai<br><br>
-    <input type="radio" name="q1"> Kolkata<br><br>
+    <h2>🪖 Army GD Mock Test</h2>
 
-    <button onclick="alert('Answer Submitted!')">Submit</button>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+
+        <h3 id="timer" style="color:red;margin:0;">
+            ⏰ Time Left: 60:00
+        </h3>
+
+        <button onclick="skipQuestion()">Skip</button>
+
+    </div>
+
+    <hr>
+
+    <h3 id="question"></h3>
+
+    <div id="options"></div>
+
+    <br>
+
+    <div style="display:flex;justify-content:space-between;">
+
+        <button onclick="previousQuestion()">Previous</button>
+
+        <button onclick="nextQuestion()">Next</button>
+
+    </div>
+
 </div>
+
+<script src="../js/army-gd.js"></script>
 
 </body>
 </html>

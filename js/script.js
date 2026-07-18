@@ -658,6 +658,17 @@ function loadQuestion() {
     }
 }
 
+function skipQuestion() {
+    current++;
+
+    if (current >= quiz.length) {
+        finishQuiz();
+        return;
+    }
+
+    loadQuestion();
+}
+
 function nextQuestion() {
     const selected = document.querySelector(
         'input[name="answer"]:checked'
