@@ -555,20 +555,20 @@ let current = 0;
 
 let score = 0;
 
+let timeTaken = [];
+let questionStartTime = Date.now();
+
 let time = 50 * 60; // 50 minutes
 
 
 
 function loadQuestion() {
 
-
+    questionStartTime = Date.now();
 
     if (current >= quiz.length) {
-
         finishQuiz();
-
         return;
-
     }
 
 
@@ -648,27 +648,26 @@ function nextQuestion() {
 
 
     if (parseInt(selected.value) === quiz[current].answer) {
+    score++;
+}
 
+// Save time taken for this question
+let seconds = Math.floor((Date.now() - questionStartTime) / 1000);
+timeTaken[current] = seconds;
 
+current++;
 
-        score++;
+loadQuestion();
+}
+function skipQuestion() {
 
-
-
-    }
-
-
+    let seconds = Math.floor((Date.now() - questionStartTime) / 1000);
+    timeTaken[current] = seconds;
 
     current++;
 
-
-
     loadQuestion();
-
-
-
 }
-
 
 
 function finishQuiz() {

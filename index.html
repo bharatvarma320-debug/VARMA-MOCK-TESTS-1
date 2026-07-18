@@ -3,52 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> VARMA MOCK TESTS </title>
+    <title>VARMA MOCK TESTS</title>
 
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
+        }
+
+        body{
+            background:#f4f4f4;
+        }
+
+        nav{
+            background:#0d6efd;
+            color:white;
+            padding:15px;
+            text-align:center;
+        }
+
+        nav h2{
+            margin-bottom:10px;
+        }
+
+        nav ul{
+            list-style:none;
+        }
+
+        nav ul li{
+            display:inline-block;
+            margin:0 15px;
+        }
+
+        nav ul li a{
+            color:white;
+            text-decoration:none;
+            font-weight:bold;
+        }
+
+        .hero{
+            text-align:center;
+            margin-top:50px;
+        }
+
+        .hero h1{
+            font-size:40px;
+            color:#0d6efd;
+        }
+
+        .hero p{
+            margin-top:20px;
+            font-size:20px;
+        }
+
+        .hero button{
+            margin-top:30px;
+            padding:15px 30px;
+            border:none;
+            background:#0d6efd;
+            color:white;
+            font-size:18px;
+            border-radius:8px;
+            cursor:pointer;
+        }
+
+        .hero button:hover{
+            background:#0b5ed7;
+        }
+
+        .exams{
+            text-align:center;
+            margin-top:60px;
+        }
+
+        .card{
+            display:inline-block;
+            width:220px;
+            padding:20px;
+            margin:15px;
+            background:#0d6efd;
+            color:white;
+            text-decoration:none;
+            border-radius:10px;
+            font-size:22px;
+            transition:.3s;
+        }
+
+        .card:hover{
+            background:#0b5ed7;
+            transform:scale(1.05);
+        }
+    </style>
+
 </head>
 
 <body>
 
-    <nav>
-        <h2> VARMA MOCK TESTS</h2>
+<nav>
+    <h2>VARMA MOCK TESTS</h2>
 
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Mock Tests</a></li>
-            <li><a href="#">Categories</a></li>
-            <li><a href="#">Leaderboard</a></li>
-            <li><a href="pages/login.html">Login</a>
-        </ul>
-    </nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="pages/login.html">Login</a></li>
+    </ul>
+</nav>
 
-    <section class="hero">
+<section class="hero">
 
-        <h1>Crack Your Dream Government Exam</h1>
+    <h1>Crack Your Dream Government Exam</h1>
 
-        <p>
-            Practice Free Mock Tests for RRB, SSC, Army, UPSC, CGL, NTPC & Group D.
-        </p>
+    <p>
+        Practice Free Mock Tests for RRB, SSC, Army, UPSC,
+        CGL, NTPC & Group D.
+    </p>
 
+    <br>
+
+    <a href="pages/login.html">
         <button>Start Free Test</button>
+    </a>
 
-    </section>
+</section>
 
-    <section class="exams">
+<section class="exams">
 
-        <h2> VARMA MOCK TESTS</h2>
+    <a href="pages/army.html" class="card">Army</a>
 
-        <a href="pages/rrb.html" class="card">RRB</a>
-<div class="card">SSC</div>
-<a href="pages/army.html" class="card">Army</a>
-<div class="card">UPSC</div>
-<div class="card">CGL</div>
-<div class="card">NTPC</div>
-<div class="card">Group D</div>
+    <a href="pages/rrb.html" class="card">RRB</a>
 
-    </section>
+    <a href="pages/ntpc.html" class="card">NTPC</a>
 
-    <script src="js/script.js"></script>
+    <a href="pages/mock.ntpc.html" class="card">SSC</a>
+
+</section>
 
 </body>
 </html>
