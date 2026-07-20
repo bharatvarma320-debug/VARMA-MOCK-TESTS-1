@@ -1,152 +1,999 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VARMA MOCK TESTS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/style.css">
+<title>VARMA MOCK TESTS</title>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial,sans-serif;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-        body{
-            background:#f4f4f4;
-        }
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-        nav{
-            background:#0d6efd;
-            color:white;
-            padding:15px;
-            text-align:center;
-        }
+<style>
 
-        nav h2{
-            margin-bottom:10px;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
 
-        nav ul{
-            list-style:none;
-        }
+body{
+background:linear-gradient(135deg,#eef5ff,#ffffff);
+overflow-x:hidden;
+}
 
-        nav ul li{
-            display:inline-block;
-            margin:0 15px;
-        }
+/* NAVBAR */
 
-        nav ul li a{
-            color:white;
-            text-decoration:none;
-            font-weight:bold;
-        }
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+z-index:1000;
+}
 
-        .hero{
-            text-align:center;
-            margin-top:50px;
-        }
+.logo{
+font-size:28px;
+font-weight:800;
+color:#0d6efd;
+}
 
-        .hero h1{
-            font-size:40px;
-            color:#0d6efd;
-        }
+.logo span{
+color:#ff9800;
+}
 
-        .hero p{
-            margin-top:20px;
-            font-size:20px;
-        }
+nav ul{
+display:flex;
+list-style:none;
+gap:30px;
+}
 
-        .hero button{
-            margin-top:30px;
-            padding:15px 30px;
-            border:none;
-            background:#0d6efd;
-            color:white;
-            font-size:18px;
-            border-radius:8px;
-            cursor:pointer;
-        }
+nav ul li a{
+text-decoration:none;
+font-weight:600;
+color:#444;
+transition:.3s;
+}
 
-        .hero button:hover{
-            background:#0b5ed7;
-        }
+nav ul li a:hover{
+color:#0d6efd;
+}
 
-        .exams{
-            text-align:center;
-            margin-top:60px;
-            margin-bottom:50px;
-        }
+.login-btn{
 
-        .card{
-            display:inline-block;
-            width:220px;
-            padding:20px;
-            margin:15px;
-            background:#0d6efd;
-            color:white;
-            text-decoration:none;
-            border-radius:10px;
-            font-size:22px;
-            transition:.3s;
-        }
+background:#0d6efd;
+color:white;
+padding:10px 25px;
+border-radius:50px;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
 
-        .card:hover{
-            background:#0b5ed7;
-            transform:scale(1.05);
-        }
-    </style>
+.login-btn:hover{
+
+background:#084fc7;
+transform:translateY(-2px);
+
+}
+
+/* HERO */
+
+.hero{
+
+padding:150px 8% 80px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+
+}
+
+.left{
+
+flex:1;
+min-width:350px;
+
+}
+
+.tag{
+
+display:inline-block;
+padding:8px 18px;
+background:#dbe9ff;
+color:#0d6efd;
+border-radius:30px;
+font-size:14px;
+margin-bottom:25px;
+font-weight:600;
+
+}
+
+.left h1{
+
+font-size:55px;
+line-height:70px;
+color:#222;
+margin-bottom:20px;
+
+}
+
+.left h1 span{
+
+color:#0d6efd;
+
+}
+
+.left p{
+
+font-size:18px;
+color:#666;
+line-height:30px;
+margin-bottom:35px;
+
+}
+
+.buttons{
+
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+
+}
+
+.start{
+
+background:#0d6efd;
+color:white;
+padding:16px 35px;
+border-radius:50px;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+
+}
+
+.start:hover{
+
+transform:translateY(-5px);
+box-shadow:0 15px 30px rgba(13,110,253,.35);
+
+}
+
+.learn{
+
+border:2px solid #0d6efd;
+padding:16px 35px;
+border-radius:50px;
+text-decoration:none;
+font-weight:600;
+color:#0d6efd;
+transition:.3s;
+
+}
+
+.learn:hover{
+
+background:#0d6efd;
+color:white;
+
+}
+
+/* RIGHT SIDE */
+
+.right{
+
+flex:1;
+display:flex;
+justify-content:center;
+min-width:350px;
+
+}
+
+.mockup{
+
+width:430px;
+background:white;
+border-radius:25px;
+padding:30px;
+box-shadow:0 25px 50px rgba(0,0,0,.12);
+
+animation:float 3s ease-in-out infinite;
+
+}
+
+.mockup h2{
+
+text-align:center;
+color:#0d6efd;
+margin-bottom:20px;
+
+}
+
+.progress{
+
+background:#f1f6ff;
+padding:15px;
+border-radius:15px;
+margin-bottom:15px;
+
+}
+
+.progress h4{
+
+margin-bottom:10px;
+
+}
+
+.bar{
+
+width:100%;
+height:12px;
+background:#ddd;
+border-radius:20px;
+overflow:hidden;
+
+}
+
+.fill{
+
+width:82%;
+height:100%;
+background:#0d6efd;
+
+}
+
+.small-cards{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+margin-top:20px;
+
+}
+
+.small{
+
+background:#f8fbff;
+padding:20px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 10px 20px rgba(0,0,0,.05);
+
+}
+
+.small i{
+
+font-size:28px;
+color:#0d6efd;
+margin-bottom:10px;
+
+}
+
+.small h3{
+
+font-size:24px;
+
+}
+
+.small p{
+
+color:#777;
+font-size:14px;
+
+}
+
+@keyframes float{
+
+0%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+100%{transform:translateY(0);}
+
+}
+
+@media(max-width:900px){
+
+.hero{
+
+flex-direction:column-reverse;
+text-align:center;
+
+}
+
+.left h1{
+
+font-size:42px;
+line-height:55px;
+
+}
+
+.buttons{
+
+justify-content:center;
+
+}
+
+nav{
+
+padding:15px 5%;
+
+}
+
+nav ul{
+
+display:none;
+
+}
+
+}
+
+</style>
 
 </head>
 
 <body>
 
 <nav>
-    <h2>VARMA MOCK TESTS</h2>
 
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="pages/login.html">Login</a></li>
-    </ul>
+<div class="logo">
+VARMA <span>MOCK TESTS</span>
+</div>
+
+<ul>
+
+<li><a href="#">Home</a></li>
+<li><a href="#exams">Exams</a></li>
+<li><a href="#features">Features</a></li>
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+<a href="pages/login.html" class="login-btn">
+Login
+</a>
+
 </nav>
 
 <section class="hero">
 
-    <h1>Crack Your Dream Government Exam</h1>
+<div class="left">
 
-    <p>
-        Practice Free Mock Tests for RRB, SSC, Army, UPSC,
-        CGL, NTPC & Group D.
-    </p>
+<div class="tag">
+🚀 India's Free Government Exam Practice Platform
+</div>
 
-    <br>
+<h1>
 
-    <a href="pages/login.html">
-        <button>Start Free Test</button>
-    </a>
+Crack Your
+<span>Dream Government Exam</span>
+
+</h1>
+
+<p>
+
+Practice FREE Mock Tests for Army, SSC GD, RRB,
+NTPC, UPSC, SSC CGL and Group D.
+Boost your speed, accuracy and confidence every day.
+
+</p>
+
+<div class="buttons">
+
+<a href="pages/login.html" class="start">
+
+Start Free Test
+
+</a>
+
+<a href="#exams" class="learn">
+
+Explore Exams
+
+</a>
+
+</div>
+
+</div>
+
+<div class="right">
+
+<div class="mockup">
+
+<h2>VARMA MOCK TESTS</h2>
+
+<div class="progress">
+
+<h4>Overall Progress</h4>
+
+<div class="bar">
+
+<div class="fill"></div>
+
+</div>
+
+</div>
+
+<div class="small-cards">
+
+<div class="small">
+
+<i class="fa-solid fa-fire"></i>
+
+<h3>30+</h3>
+
+<p>Daily Tests</p>
+
+</div>
+
+<div class="small">
+
+<i class="fa-solid fa-users"></i>
+
+<h3>100%</h3>
+
+<p>Free</p>
+
+</div>
+
+<div class="small">
+
+<i class="fa-solid fa-award"></i>
+
+<h3>7</h3>
+
+<p>Exam Categories</p>
+
+</div>
+
+<div class="small">
+
+<i class="fa-solid fa-clock"></i>
+
+<h3>24×7</h3>
+
+<p>Practice</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- EXAMS SECTION -->
+
+<section id="exams" style="padding:80px 8%; background:#fff;">
+
+<div style="text-align:center;margin-bottom:60px;">
+
+<h2 style="font-size:42px;color:#222;">
+Choose Your Exam
+</h2>
+
+<p style="color:#666;font-size:18px;margin-top:15px;">
+Practice free mock tests for your dream government job.
+</p>
+
+</div>
+
+<div style="
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:30px;">
+
+<!-- CARD 1 -->
+
+<a href="pages/army.html" style="text-decoration:none;">
+
+<div style="
+background:#ffffff;
+border-radius:20px;
+padding:30px;
+box-shadow:0 15px 30px rgba(0,0,0,.08);
+transition:.3s;
+text-align:center;">
+
+<div style="font-size:55px;">🪖</div>
+
+<h3 style="margin:20px 0;color:#222;">Indian Army</h3>
+
+<p style="color:#666;">
+Army GD Mock Tests
+</p>
+
+<button style="
+margin-top:20px;
+padding:12px 25px;
+border:none;
+background:#0d6efd;
+color:white;
+border-radius:30px;
+cursor:pointer;">
+
+Start Test
+
+</button>
+
+</div>
+
+</a>
+
+<!-- CARD 2 -->
+
+<a href="pages/ssc.html" style="text-decoration:none;">
+
+<div style="
+background:#ffffff;
+border-radius:20px;
+padding:30px;
+box-shadow:0 15px 30px rgba(0,0,0,.08);
+text-align:center;">
+
+<div style="font-size:55px;">🛡️</div>
+
+<h3 style="margin:20px 0;color:#222;">SSC GD</h3>
+
+<p style="color:#666;">
+Daily Free Mock Tests
+</p>
+
+<button style="
+margin-top:20px;
+padding:12px 25px;
+border:none;
+background:#0d6efd;
+color:white;
+border-radius:30px;">
+
+Start Test
+
+</button>
+
+</div>
+
+</a>
+
+<!-- CARD 3 -->
+
+<a href="pages/rrb.html" style="text-decoration:none;">
+
+<div style="
+background:#ffffff;
+border-radius:20px;
+padding:30px;
+box-shadow:0 15px 30px rgba(0,0,0,.08);
+text-align:center;">
+
+<div style="font-size:55px;">🚆</div>
+
+<h3 style="margin:20px 0;color:#222;">RRB</h3>
+
+<p style="color:#666;">
+Railway Recruitment Tests
+</p>
+
+<button style="
+margin-top:20px;
+padding:12px 25px;
+border:none;
+background:#0d6efd;
+color:white;
+border-radius:30px;">
+
+Start Test
+
+</button>
+
+</div>
+
+</a>
+
+<!-- CARD 4 -->
+
+<a href="pages/ntpc.html" style="text-decoration:none;">
+
+<div style="
+background:#ffffff;
+border-radius:20px;
+padding:30px;
+box-shadow:0 15px 30px rgba(0,0,0,.08);
+text-align:center;">
+
+<div style="font-size:55px;">💻</div>
+
+<h3 style="margin:20px 0;color:#222;">RRB NTPC</h3>
+
+<p style="color:#666;">
+Latest Pattern Mock Tests
+</p>
+
+<button style="
+margin-top:20px;
+padding:12px 25px;
+border:none;
+background:#0d6efd;
+color:white;
+border-radius:30px;">
+
+Start Test
+
+</button>
+
+</div>
+
+</a>
+
+<!-- CARD 5 -->
+
+<div style="
+background:#ffffff;
+border-radius:20px;
+padding:30px;
+box-shadow:0 15px 30px rgba(0,0,0,.08);
+text-align:center;">
+
+<div style="font-size:55px;">🏛️</div>
+
+<h3 style="margin:20px 0;color:#222;">UPSC</h3>
+
+<p style="color:#666;">
+Coming Soon
+</p>
+
+</div>
+
+<!-- CARD 6 -->
+
+<a href="pages/ssc-cgl.html" style="text-decoration:none;">
+
+<div style="
+background:#ffffff;
+border-radius:20px;
+padding:30px;
+box-shadow:0 15px 30px rgba(0,0,0,.08);
+text-align:center;">
+
+<div style="font-size:55px;">📚</div>
+
+<h3 style="margin:20px 0;color:#222;">SSC CGL</h3>
+
+<p style="color:#666;">
+Start Mock Test
+</p>
+
+<button style="
+margin-top:20px;
+padding:12px 25px;
+border:none;
+background:#0d6efd;
+color:white;
+border-radius:30px;">
+
+Start Test
+
+</button>
+
+</div>
+
+</a>
+
+<!-- CARD 7 -->
+
+<div style="
+background:#ffffff;
+border-radius:20px;
+padding:30px;
+box-shadow:0 15px 30px rgba(0,0,0,.08);
+text-align:center;">
+
+<div style="font-size:55px;">📝</div>
+
+<h3 style="margin:20px 0;color:#222;">Group D</h3>
+
+<p style="color:#666;">
+Coming Soon
+</p>
+
+</div>
+
+</div>s
 
 </section>
 
-<section class="exams">
+<!-- FEATURES -->
 
-    <a href="pages/army.html" class="card">🇮🇳 Army</a>
+<section id="features"
+style="
+padding:90px 8%;
+background:#eef5ff;">
 
-    <a href="pages/ssc.html" class="card">🛡 SSC GD</a>
+<div style="text-align:center;">
 
-    <a href="pages/rrb.html" class="card">🚆 RRB</a>
+<h2 style="font-size:42px;">
+Why Choose VARMA MOCK TESTS?
+</h2>
 
-    <a href="pages/ntpc.html" class="card">📘 NTPC</a>
+</div>
 
-    <a href="#" class="card">🏛 UPSC</a>
+<div style="
+margin-top:60px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;">
 
-    <a href="#" class="card">📚 SSC CGL</a>
+<div style="
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 15px 30px rgba(0,0,0,.08);">
 
-    <a href="#" class="card">📝 Group D</a>
+<h1>🎯</h1>
+
+<h3>Real Exam Pattern</h3>
+
+<p style="margin-top:15px;color:#666;">
+Questions based on latest syllabus.
+</p>
+
+</div>
+
+<div style="
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 15px 30px rgba(0,0,0,.08);">
+
+<h1>⚡</h1>
+
+<h3>Instant Results</h3>
+
+<p style="margin-top:15px;color:#666;">
+Know your score immediately.
+</p>
+
+</div>
+
+<div style="
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 15px 30px rgba(0,0,0,.08);">
+
+<h1>📈</h1>
+
+<h3>Performance Analysis</h3>
+
+<p style="margin-top:15px;color:#666;">
+Track your improvement every day.
+</p>
+
+</div>
+
+<div style="
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 15px 30px rgba(0,0,0,.08);">
+
+<h1>🏆</h1>
+
+<h3>100% Free</h3>
+
+<p style="margin-top:15px;color:#666;">
+No subscription. Practice anytime.
+</p>
+
+</div>
+
+</div>
 
 </section>
+<!-- STATISTICS -->
+
+<section style="
+padding:80px 8%;
+background:#ffffff;">
+
+<div style="text-align:center;">
+
+<h2 style="font-size:42px;color:#222;">
+Our Achievements
+</h2>
+
+<p style="margin-top:15px;color:#666;font-size:18px;">
+Helping aspirants prepare every day.
+</p>
+
+</div>
+
+<div style="
+margin-top:60px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;">
+
+<div style="
+background:#0d6efd;
+color:white;
+padding:35px;
+border-radius:20px;
+text-align:center;">
+
+<h1>7+</h1>
+<p>Exam Categories</p>
+
+</div>
+
+<div style="
+background:#0d6efd;
+color:white;
+padding:35px;
+border-radius:20px;
+text-align:center;">
+
+<h1>100%</h1>
+<p>Free Mock Tests</p>
+
+</div>
+
+<div style="
+background:#0d6efd;
+color:white;
+padding:35px;
+border-radius:20px;
+text-align:center;">
+
+<h1>24×7</h1>
+<p>Available Anytime</p>
+
+</div>
+
+<div style="
+background:#0d6efd;
+color:white;
+padding:35px;
+border-radius:20px;
+text-align:center;">
+
+<h1>Daily</h1>
+<p>New Practice Tests</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CALL TO ACTION -->
+
+<section style="
+padding:90px 8%;
+background:linear-gradient(135deg,#0d6efd,#3d8bfd);
+color:white;
+text-align:center;">
+
+<h2 style="font-size:42px;">
+Start Your Preparation Today
+</h2>
+
+<p style="
+margin-top:20px;
+font-size:18px;
+max-width:700px;
+margin-left:auto;
+margin-right:auto;">
+
+Practice daily, improve your speed and accuracy, and get one step closer to your dream government job.
+
+</p>
+
+<a href="pages/login.html"
+style="
+display:inline-block;
+margin-top:35px;
+padding:18px 40px;
+background:white;
+color:#0d6efd;
+text-decoration:none;
+font-weight:700;
+border-radius:50px;
+transition:.3s;">
+
+🚀 Start Free Test
+
+</a>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer id="contact"
+style="
+background:#111827;
+color:white;
+padding:50px 8%;
+text-align:center;">
+
+<h2 style="margin-bottom:20px;">
+VARMA MOCK TESTS
+</h2>
+
+<p style="
+max-width:700px;
+margin:auto;
+color:#cbd5e1;
+line-height:30px;">
+
+Your Daily Practice Partner for Government Exams.
+Practice for Army, SSC GD, RRB, NTPC, UPSC, SSC CGL and Group D.
+
+</p>
+
+<div style="margin:30px 0;">
+
+<a href="index.html"
+style="color:white;margin:0 15px;text-decoration:none;">
+Home
+</a>
+
+<a href="#exams"
+style="color:white;margin:0 15px;text-decoration:none;">
+Exams
+</a>
+
+<a href="#features"
+style="color:white;margin:0 15px;text-decoration:none;">
+Features
+</a>
+
+<a href="pages/login.html"
+style="color:white;margin:0 15px;text-decoration:none;">
+Login
+</a>
+
+</div>
+
+<div style="font-size:30px;">
+
+<i class="fab fa-instagram"></i>
+
+&nbsp;&nbsp;
+
+<i class="fab fa-youtube"></i>
+
+&nbsp;&nbsp;
+
+<i class="fab fa-telegram"></i>
+
+</div>
+
+<hr style="
+margin:35px 0;
+border:0;
+height:1px;
+background:#374151;">
+
+<p style="color:#94a3b8;">
+© 2026 VARMA MOCK TESTS. All Rights Reserved.
+</p>
+
+</footer>
 
 </body>
 </html>

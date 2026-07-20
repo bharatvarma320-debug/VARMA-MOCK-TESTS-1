@@ -1,48 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Army GD Mock Test</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../css/style.css">
+<title>Army GD Mock Test | VARMA TESTS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f6fa;
+}
+
+/* HEADER */
+
+.header{
+
+background:#d32f2f;
+color:white;
+padding:18px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+
+}
+
+.logo{
+
+font-size:28px;
+font-weight:700;
+
+}
+
+#timer{
+
+font-size:24px;
+font-weight:bold;
+
+}
+
+/* MAIN */
+
+.container{
+
+max-width:900px;
+margin:40px auto;
+padding:20px;
+
+}
+
+.card{
+
+background:white;
+padding:35px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+
+}
+
+.question-number{
+
+display:inline-block;
+background:#d32f2f;
+color:white;
+padding:8px 20px;
+border-radius:30px;
+margin-bottom:25px;
+
+}
+
+#question{
+
+font-size:24px;
+margin-bottom:25px;
+color:#222;
+
+}
+
+.option{
+
+display:block;
+width:100%;
+padding:18px;
+margin:15px 0;
+border:2px solid #ddd;
+border-radius:12px;
+background:white;
+cursor:pointer;
+font-size:17px;
+transition:.3s;
+
+}
+
+.option:hover{
+
+border-color:#d32f2f;
+background:#fff5f5;
+
+}
+
+.buttons{
+
+display:flex;
+justify-content:space-between;
+margin-top:35px;
+flex-wrap:wrap;
+gap:15px;
+
+}
+
+button{
+
+padding:15px 30px;
+border:none;
+border-radius:12px;
+font-size:16px;
+cursor:pointer;
+font-weight:600;
+transition:.3s;
+
+}
+
+.prev{
+
+background:#616161;
+color:white;
+
+}
+
+.skip{
+
+background:#ff9800;
+color:white;
+
+}
+
+.next{
+
+background:#d32f2f;
+color:white;
+
+}
+
+button:hover{
+
+transform:translateY(-3px);
+
+}
+
+.progress{
+
+margin-top:25px;
+
+}
+
+.progress-bar{
+
+height:12px;
+background:#ddd;
+border-radius:30px;
+overflow:hidden;
+
+}
+
+.fill{
+
+width:0%;
+height:100%;
+background:#d32f2f;
+transition:.5s;
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-<div class="login-box">
+<div class="header">
 
-    <h2>🪖 Army GD Mock Test</h2>
+<div class="logo">
 
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+🪖 VARMA TESTS
 
-        <h3 id="timer" style="color:red;margin:0;">
-            ⏰ Time Left: 60:00
-        </h3>
+</div>
 
-        <button onclick="skipQuestion()">Skip</button>
+<div id="timer">
 
-    </div>
+⏰ 60:00
 
-    <hr>
+</div>
 
-    <h3 id="question"></h3>
+</div>
 
-    <div id="options"></div>
+<div class="container">
 
-    <br>
+<div class="card">
 
-    <div style="display:flex;justify-content:space-between;">
+<div class="question-number">
 
-        <button onclick="previousQuestion()">Previous</button>
+Question <span id="qno">1</span> / 60
 
-        <button onclick="nextQuestion()">Next</button>
+</div>
 
-    </div>
+<h2 id="question"></h2>
+
+<div id="options"></div>
+
+<div class="progress">
+
+<div class="progress-bar">
+
+<div class="fill" id="fill"></div>
+
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="prev" onclick="previousQuestion()">
+⏮ Previous
+</button>
+
+<button class="skip" onclick="skipQuestion()">
+⏩ Skip
+</button>
+
+<button class="next" onclick="nextQuestion()">
+Next ⏭
+</button>
+
+</div>
+
+</div>
 
 </div>
 
 <script src="../js/army-gd.js"></script>
+
+<script>
+
+function updateProgress(current,total){
+
+document.getElementById("qno").innerHTML=current+1;
+
+document.getElementById("fill").style.width=((current+1)/total*100)+"%";
+
+}
+
+</script>
 
 </body>
 </html>
