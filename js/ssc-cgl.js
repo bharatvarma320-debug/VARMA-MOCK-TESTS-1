@@ -445,6 +445,15 @@ function skipQuestion() {
   loadQuestion();
 }
 
+function prevQuestion() {
+  if (current > 0) {
+    current--;
+    loadQuestion();
+  } else {
+    alert("You are already at the first question.");
+  }
+}
+
 function finishQuiz() {
   const percentage = ((score / quiz.length) * 100).toFixed(2);
 

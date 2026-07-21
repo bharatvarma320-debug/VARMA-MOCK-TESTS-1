@@ -621,6 +621,15 @@ function loadQuestion() {
 
 
 
+function prevQuestion() {
+    if (current > 0) {
+        current--;
+        loadQuestion();
+    } else {
+        alert("You are already at the first question.");
+    }
+}
+
 function nextQuestion() {
 
 
