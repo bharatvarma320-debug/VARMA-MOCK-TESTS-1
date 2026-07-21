@@ -1,16 +1,10 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
-
 body{
     background:#f5f7fa;
 }
 
+/* Navbar */
 nav{
-    background:#0d6efd;
+    background:#c62828;
     color:white;
     display:flex;
     justify-content:space-between;
@@ -18,42 +12,13 @@ nav{
     padding:15px 50px;
 }
 
-nav ul{
-    list-style:none;
-    display:flex;
-}
-
-nav ul li{
-    margin-left:25px;
-}
-
-nav ul li a{
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-nav ul li a:hover{
-    color:yellow;
-}
-
-.hero{
-    text-align:center;
-    padding:80px 20px;
-}
-
+/* Hero */
 .hero h1{
-    color:#0d6efd;
-    font-size:50px;
-}
-
-.hero p{
-    font-size:22px;
-    margin:20px 0;
+    color:#c62828;
 }
 
 .hero button{
-    background:#0d6efd;
+    background:#c62828;
     color:white;
     padding:15px 35px;
     border:none;
@@ -63,17 +28,12 @@ nav ul li a:hover{
 }
 
 .hero button:hover{
-    background:#0056d2;
+    background:#8e0000;
 }
 
-.exams{
-    text-align:center;
-    padding:60px 20px;
-}
-
+/* Cards */
 .exams h2{
-    margin-bottom:30px;
-    color:#0d6efd;
+    color:#c62828;
 }
 
 .card{
@@ -81,27 +41,31 @@ nav ul li a:hover{
     width:180px;
     margin:15px;
     padding:25px;
-    background:#0d6efd;
+    background:#c62828;
     color:white;
     font-size:22px;
     font-weight:bold;
     border-radius:10px;
     cursor:pointer;
-    transition:0.3s;
+    transition:.3s;
 }
 
 .card:hover{
-    background:#0056d2;
+    background:#8e0000;
     transform:scale(1.05);
 }
+
+/* Login Box */
 .login-box{
     width:350px;
     margin:100px auto;
     background:white;
     padding:30px;
-    border-radius:10px;
-    box-shadow:0 0 10px gray;
+    border-radius:12px;
+    box-shadow:0 8px 25px rgba(0,0,0,.2);
     text-align:center;
+    position:relative;
+    overflow:hidden;
 }
 
 .login-box input{
@@ -114,56 +78,46 @@ nav ul li a:hover{
 .login-box button{
     width:100%;
     padding:12px;
-    background:#0d6efd;
+    background:#c62828;
     color:white;
     border:none;
     border-radius:5px;
     cursor:pointer;
-}
-.top-bar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:15px;
+    font-weight:bold;
 }
 
+.login-box button:hover{
+    background:#8e0000;
+}
+
+/* Skip Button */
 .skip-btn{
     width:90px !important;
     padding:10px !important;
-    background:#0d6efd;
+    background:#ff9800;
     color:white;
     border:none;
     border-radius:5px;
     cursor:pointer;
-}/* ===== Watermark ===== */
-
-.login-box{
-    position: relative;
-    overflow: hidden;
 }
+
 /* Watermark */
-
-.login-box{
-    position: relative;
-    overflow: hidden;
-}
-
 .login-box::before{
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 260px;
-    height: 260px;
-    background: url("../images/varma-mock-tests.png") no-repeat center;
-    background-size: contain;
-    opacity: 0.05;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 0;
+    content:"";
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:260px;
+    height:260px;
+    background:url("../images/varma-mock-tests.png") no-repeat center;
+    background-size:contain;
+    opacity:.05;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+    z-index:0;
 }
 
-.login-box > *{
-    position: relative;
-    z-index: 1;
+.login-box>*{
+    position:relative;
+    z-index:1;
 }

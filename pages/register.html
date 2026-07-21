@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VARMA TESTS | Register</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:linear-gradient(135deg,#d32f2f,#ff7043);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+
+}
+
+.register-box{
+
+width:430px;
+background:white;
+padding:35px;
+border-radius:20px;
+box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+}
+
+.logo{
+
+text-align:center;
+font-size:32px;
+font-weight:700;
+color:#d32f2f;
+margin-bottom:8px;
+
+}
+
+.subtitle{
+
+text-align:center;
+color:#666;
+margin-bottom:25px;
+
+}
+
+.input-box{
+
+margin-bottom:18px;
+
+}
+
+.input-box label{
+
+display:block;
+margin-bottom:8px;
+font-weight:600;
+
+}
+
+.input-box input{
+
+width:100%;
+padding:14px;
+border:2px solid #ddd;
+border-radius:10px;
+font-size:16px;
+
+}
+
+.input-box input:focus{
+
+outline:none;
+border-color:#d32f2f;
+
+}
+
+button{
+
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:#d32f2f;
+color:white;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+
+}
+
+button:hover{
+
+background:#b71c1c;
+
+}
+
+#error{
+
+margin-top:15px;
+text-align:center;
+color:red;
+font-weight:bold;
+
+}
+
+.login-link{
+
+text-align:center;
+margin-top:20px;
+
+}
+
+.login-link a{
+
+color:#d32f2f;
+font-weight:bold;
+text-decoration:none;
+
+}
+
+.footer{
+
+margin-top:25px;
+text-align:center;
+color:#777;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="register-box">
+
+<div class="logo">
+📝 VARMA TESTS
+</div>
+
+<div class="subtitle">
+Create Your Free Account
+</div>
+
+<div class="input-box">
+<label>Full Name</label>
+<input type="text" id="name" placeholder="Enter Full Name">
+</div>
+
+<div class="input-box">
+<label>Phone Number</label>
+<input type="text" id="phone" maxlength="10" placeholder="Enter Mobile Number">
+</div>
+
+<div class="input-box">
+<label>Password</label>
+<input type="password" id="password" placeholder="Create Password">
+</div>
+
+<div class="input-box">
+<label>Confirm Password</label>
+<input type="password" id="confirm" placeholder="Confirm Password">
+</div>
+
+<button onclick="register()">
+CREATE ACCOUNT
+</button>
+
+<p id="error"></p>
+
+<div class="login-link">
+
+Already have an account?
+
+<a href="login.html">Login</a>
+
+</div>
+
+<div class="footer">
+
+© 2026 VARMA TESTS
+
+</div>
+
+</div>
+
+<script>
+
+function register(){
+
+let name=document.getElementById("name").value.trim();
+let phone=document.getElementById("phone").value.trim();
+let password=document.getElementById("password").value.trim();
+let confirm=document.getElementById("confirm").value.trim();
+
+if(name==""){
+
+document.getElementById("error").innerHTML="Enter your name";
+return;
+
+}
+
+if(phone.length!=10){
+
+document.getElementById("error").innerHTML="Enter valid mobile number";
+return;
+
+}
+
+if(password.length<6){
+
+document.getElementById("error").innerHTML="Password must be at least 6 characters";
+return;
+
+}
+
+if(password!=confirm){
+
+document.getElementById("error").innerHTML="Passwords do not match";
+return;
+
+}
+
+// Save user data
+localStorage.setItem("varmaName",name);
+localStorage.setItem("varmaPhone",phone);
+localStorage.setItem("varmaPassword",password);
+
+alert("Registration Successful!");
+
+window.location.href="login.html";
+
+}
+
+</script>
+
+</body>
+</html>

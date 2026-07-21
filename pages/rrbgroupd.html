@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RRB Group D Mock Test | VARMA TESTS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f4f6fb;
+}
+
+/* HEADER */
+
+.header{
+background:#1565c0;
+color:white;
+padding:18px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+}
+
+#timer{
+font-size:22px;
+font-weight:bold;
+}
+
+/* MAIN */
+
+.container{
+max-width:900px;
+margin:40px auto;
+padding:20px;
+}
+
+.card{
+background:white;
+border-radius:20px;
+padding:35px;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+.question-number{
+display:inline-block;
+background:#1565c0;
+color:white;
+padding:10px 20px;
+border-radius:30px;
+margin-bottom:20px;
+font-weight:bold;
+}
+
+#section{
+color:#1565c0;
+margin-bottom:15px;
+font-size:20px;
+}
+
+#question{
+font-size:25px;
+margin-bottom:25px;
+color:#222;
+}
+
+#options label{
+display:block;
+padding:18px;
+margin-bottom:15px;
+border:2px solid #ddd;
+border-radius:12px;
+cursor:pointer;
+transition:.3s;
+font-size:18px;
+}
+
+#options label:hover{
+background:#eef6ff;
+border-color:#1565c0;
+}
+
+#options input{
+margin-right:12px;
+transform:scale(1.2);
+}
+
+.buttons{
+display:flex;
+justify-content:space-between;
+margin-top:30px;
+flex-wrap:wrap;
+gap:15px;
+}
+
+button{
+padding:15px 28px;
+font-size:16px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+transition:.3s;
+}
+
+.prev{
+background:#616161;
+color:white;
+}
+
+.skip{
+background:#ff9800;
+color:white;
+}
+
+.next{
+background:#1565c0;
+color:white;
+}
+
+button:hover{
+transform:translateY(-3px);
+}
+
+.progress{
+margin-top:25px;
+}
+
+.progress-bar{
+height:10px;
+background:#ddd;
+border-radius:30px;
+overflow:hidden;
+}
+
+.fill{
+height:100%;
+width:0%;
+background:#1565c0;
+transition:.5s;
+}
+
+@media(max-width:768px){
+
+.header{
+padding:15px;
+flex-direction:column;
+gap:10px;
+}
+
+.container{
+padding:10px;
+}
+
+#question{
+font-size:20px;
+}
+
+.buttons{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="logo">
+🚆 VARMA TESTS
+</div>
+
+<div id="timer">
+90:00
+</div>
+
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<div class="question-number">
+Question
+</div>
+
+<h3 id="section"></h3>
+
+<h2 id="question"></h2>
+
+<div id="options"></div>
+
+<div class="progress">
+
+<div class="progress-bar">
+
+<div class="fill" id="fill"></div>
+
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="prev" onclick="history.back()">
+⬅ Previous
+</button>
+
+<button class="skip" onclick="skipQuestion()">
+⏩ Skip
+</button>
+
+<button class="next" onclick="nextQuestion()">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="../js/rrbgd.js"></script>
+
+<script>
+
+const oldLoad = loadQuestion;
+
+loadQuestion = function(){
+
+oldLoad();
+
+document.querySelector(".question-number").innerHTML =
+"Question " + (current+1) + " / " + quiz.length;
+
+document.getElementById("fill").style.width =
+((current+1)/quiz.length*100)+"%";
+
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>    
