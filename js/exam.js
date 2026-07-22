@@ -8,12 +8,22 @@ const quizData =
 let quiz = quizData;
 let currentQuestion = 0;
 let score = 0;
-let answers = [];
+let answers = {}; // Keeps track of question index -> selected option index
 let timerInterval = null;
 let totalTime = 60 * 60;
 
 function getEl(id) {
   return document.getElementById(id);
+}
+
+// -------------------------------------------------------------
+// HELPER: Explicitly save whatever is currently selected
+// -------------------------------------------------------------
+function saveCurrentAnswer() {
+  const selectedOption = document.querySelector('input[name="answer"]:checked');
+  if (selectedOption) {
+    answers[currentQuestion] = Number(selectedOption.value);
+  }
 }
 
 function startTimer() {
@@ -34,28 +44,12 @@ function startTimer() {
   }, 1000);
 }
 
-function saveAnswer() {
-  const selected = document.querySelector('input[name="answer"]:checked');
-  if (selected) {
-    answers[currentQuestion] = Number(selected.value);
-  } else {
-    delete answers[currentQuestion];
-  }
-}
-
 function loadQuestion() {
   const section = getEl("section");
   const question = getEl("question");
   const options = getEl("options");
 
   if (!section || !question || !options) return;
-
-  if (!quiz.length) {
-    section.textContent = "Section :";
-    question.textContent = "No questions available.";
-    options.innerHTML = "";
-    return;
-  }
 
   const q = quiz[currentQuestion];
 
@@ -65,6 +59,7 @@ function loadQuestion() {
   let html = "";
 
   q.options.forEach((option, index) => {
+    // Check against saved answers
     const checked = answers[currentQuestion] === index ? "checked" : "";
     html += `
       <label class="option">
@@ -75,6 +70,13 @@ function loadQuestion() {
   });
 
   options.innerHTML = html;
+
+  document.querySelectorAll('input[name="answer"]').forEach(radio => {
+    radio.addEventListener("change", () => {
+      answers[currentQuestion] = Number(radio.value);
+      updatePalette();
+    });
+  });
 }
 
 function createPalette() {
@@ -94,11 +96,13 @@ function updatePalette() {
     btn.style.background = "#eeeeee";
     btn.style.color = "#000";
 
-    if (answers[index] !== undefined) {
+    // Marked as answered
+    if (answers[index] !== undefined && answers[index] !== null) {
       btn.style.background = "#4CAF50";
       btn.style.color = "#fff";
     }
 
+    // Active question
     if (index === currentQuestion) {
       btn.style.background = "#c62828";
       btn.style.color = "#fff";
@@ -107,7 +111,7 @@ function updatePalette() {
 }
 
 function jumpQuestion(index) {
-  saveAnswer();
+  saveCurrentAnswer(); // Save before jumping
   currentQuestion = index;
   loadQuestion();
   updatePalette();
@@ -121,9 +125,9 @@ function bindButton(id, callback) {
 }
 
 function submitExam() {
-  if (timerInterval) clearInterval(timerInterval);
+  saveCurrentAnswer(); // Save final question state before grading
 
-  saveAnswer();
+  if (timerInterval) clearInterval(timerInterval);
 
   score = quiz.reduce((total, question, index) => {
     return total + (answers[index] === question.answer ? 1 : 0);
@@ -162,13 +166,24 @@ function initExam() {
     return;
   }
 
+  // Instant save & palette update when an option is clicked
+  const optionsContainer = getEl("options");
+  if (optionsContainer) {
+    optionsContainer.addEventListener("change", (e) => {
+      if (e.target.name === "answer") {
+        saveCurrentAnswer();
+        updatePalette();
+      }
+    });
+  }
+
   createPalette();
   loadQuestion();
   updatePalette();
   startTimer();
 
   bindButton("nextBtn", () => {
-    saveAnswer();
+    saveCurrentAnswer();
     if (currentQuestion < quiz.length - 1) {
       currentQuestion++;
       loadQuestion();
@@ -177,7 +192,7 @@ function initExam() {
   });
 
   bindButton("prevBtn", () => {
-    saveAnswer();
+    saveCurrentAnswer();
     if (currentQuestion > 0) {
       currentQuestion--;
       loadQuestion();
@@ -186,7 +201,7 @@ function initExam() {
   });
 
   bindButton("skipBtn", () => {
-    saveAnswer();
+    saveCurrentAnswer();
     if (currentQuestion < quiz.length - 1) {
       currentQuestion++;
       loadQuestion();

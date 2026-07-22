@@ -551,226 +551,173 @@ const armyQuestions = [
     answer: 0
 },
 ];
+const armyQuestions = [
+  // 🔹 all your questions here
+];
+// army.js (exam.js)
 
 let quiz = armyQuestions;
 
 let current = 0;
+let time = 90 * 60;
+let userAnswers = new Array(quiz.length).fill(null);
 
-let score = 0;
-
-let timeTaken = [];
-
-let questionStartTime = Date.now();
-
-let time = 50 * 60;
-
+// Load Question
 function loadQuestion() {
-
-    questionStartTime = Date.now();
 
     if (current >= quiz.length) {
         finishQuiz();
         return;
     }
 
-
-
-    document.getElementById("section").innerHTML =
-
-        "Section : " + quiz[current].section;
-
-
-
-    document.getElementById("question").innerHTML =
-
-        "Q" + (current + 1) + ". " + quiz[current].question;
-
-
+    document.getElementById("section").innerHTML = quiz[current].section;
+    document.getElementById("question").innerHTML = quiz[current].question;
 
     let html = "";
 
-
-
     quiz[current].options.forEach((option, index) => {
 
-
-
         html += `
-
-        <label>
-
-            <input type="radio" name="answer" value="${index}">
-
-            ${option}
-
-        </label><br><br>
-
+            <label class="option">
+                <input type="radio"
+                       name="answer"
+                       value="${index}"
+                       ${userAnswers[current] === index ? "checked" : ""}>
+                ${option}
+            </label>
         `;
-
-
 
     });
 
-
-
     document.getElementById("options").innerHTML = html;
 
+    // Question Number
+    const q = document.querySelector(".question-number");
+    if (q) {
+        q.innerHTML = `Question ${current + 1} / ${quiz.length}`;
+    }
 
+    // Progress Bar
+    const fill = document.getElementById("fill");
+    if (fill) {
+        fill.style.width = ((current + 1) / quiz.length) * 100 + "%";
+    }
+}
+
+// Save Selected Answer
+function saveAnswer() {
+
+    const selected = document.querySelector('input[name="answer"]:checked');
+
+    if (selected) {
+        userAnswers[current] = parseInt(selected.value);
+    }
 
 }
 
+// Next Button
+function nextQuestion() {
 
+    saveAnswer();
 
+    if (current < quiz.length - 1) {
+        current++;
+        loadQuestion();
+    } else {
+        finishQuiz();
+    }
+
+}
+
+// Previous Button
 function prevQuestion() {
+
+    saveAnswer();
+
     if (current > 0) {
         current--;
         loadQuestion();
     } else {
-        alert("You are already at the first question.");
-    }
-}
-
-function nextQuestion() {
-
-
-
-    const selected = document.querySelector(
-
-        'input[name="answer"]:checked'
-
-    );
-
-
-
-    if (!selected) {
-
-
-
-        alert("Please select an answer.");
-
-
-
-        return;
-
-
-
+        alert("This is the first question.");
     }
 
-
-
-    if (parseInt(selected.value) === quiz[current].answer) {
-    score++;
 }
 
-// Save time taken for this question
-let seconds = Math.floor((Date.now() - questionStartTime) / 1000);
-timeTaken[current] = seconds;
-
-current++;
-
-loadQuestion();
-}
+// Skip Button
 function skipQuestion() {
 
-    let seconds = Math.floor((Date.now() - questionStartTime) / 1000);
-    timeTaken[current] = seconds;
+    if (current < quiz.length - 1) {
+        current++;
+        loadQuestion();
+    } else {
+        finishQuiz();
+    }
 
-    current++;
-
-    loadQuestion();
 }
 
-
+// Finish Quiz
 function finishQuiz() {
 
+    saveAnswer();
 
+    let score = 0;
 
-    let percentage =
+    for (let i = 0; i < quiz.length; i++) {
 
-        ((score / quiz.length) * 100).toFixed(2);
+        if (userAnswers[i] === quiz[i].answer) {
+            score++;
+        }
 
+    }
 
+    document.querySelector(".card").innerHTML = `
 
-    document.body.innerHTML = `
+        <h2>🎉 Army Mock Test Completed</h2>
 
-        <div style="text-align:center;margin-top:80px;font-family:Arial;">
+        <br>
 
-            <h1>🎉 Test Completed</h1>
+        <h3>Total Questions : ${quiz.length}</h3>
 
-            <h2>Score : ${score}/${quiz.length}</h2>
+        <h3>Correct Answers : ${score}</h3>
 
-            <h2>Percentage : ${percentage}%</h2>
+        <h3>Wrong Answers : ${quiz.length - score}</h3>
 
-        </div>
+        <h3>Score : ${((score / quiz.length) * 100).toFixed(2)}%</h3>
+
+        <br>
+
+        <button onclick="location.reload()">
+            Restart Test
+        </button>
 
     `;
 
-
-
 }
 
-
-
+// Timer
 function startTimer() {
-
-
 
     const timer = setInterval(() => {
 
-
-
         let minutes = Math.floor(time / 60);
-
-
-
         let seconds = time % 60;
 
-
-
         document.getElementById("timer").innerHTML =
-
-            "Time Left : " +
-
-            minutes +
-
-            ":" +
-
-            (seconds < 10 ? "0" : "") +
-
-            seconds;
-
-
+            `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 
         time--;
 
-
-
         if (time < 0) {
 
-
-
             clearInterval(timer);
-
-
-
             finishQuiz();
-
-
 
         }
 
-
-
     }, 1000);
-
-
 
 }
 
-
-
+// Start
 loadQuestion();
-
-
-
 startTimer();
